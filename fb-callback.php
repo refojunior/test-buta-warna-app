@@ -1,5 +1,4 @@
 <?php 
-
 require_once "config.php";
 
 try{
@@ -18,12 +17,12 @@ if(!$accessToken){
 }
 
 
-$oAuth2Client = $FB->getOAuth2Client();
+$oAuth2Client = $fb->getOAuth2Client();
 if(!$accessToken->isLongLived()){
     $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 }
 
-$response = $FB->get("me?fields=id, name, email, picture", $accessToken);
+$response = $fb->get("me?fields=id, name, email, picture", $accessToken);
 $userData = $response->getGraphNode()->asArray();
 
 $_SESSION['userData'] = $userData;

@@ -1,42 +1,40 @@
 
 <?php 
 include "config.php";
+if(!isset($_SESSION['access_token'])){
+    header("location:login.php");
+    exit();
+} else {
+    $title = "Try Now";
+    include_once "header.php";
+}
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-</head>
 <body>
-    <div class="container" style="margin-top:100px">
+    <?php include_once "navbar.php" ?>
+    <div class="container" style="margin-top:50px">
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <img src="<?= $_SESSION['userData']['picture']['url'] ?>" width="140">
+                <img src="img/1.jpg" alt="1" class="img-fluid">
             </div>
-            <div class="col-md-9">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>ID</td>
-                            <td><?= $_SESSION['userData']['id'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td><?= $_SESSION['userData']['name'] ?></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td><?= $_SESSION['userData']['email'] ?></td>
-                        </tr>
-                    </tbody>
-                </table>
-               
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-3" style="text-align: center">
+                <b>Angka berapakah gambar diatas?</b>
+                <ul>
+                    <li><input type="radio" value="2" name="answer"> 2</li>
+                    <li><input type="radio" value="3" name="answer"> 3</li>
+                    <li><input type="radio" value="1" name="answer"> 1</li>
+                    <li><input type="radio" value="4" name="answer"> 4</li>
+                </li>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-3" style="text-align: center">
+                <input type="submit" value="Next" class="btn btn-primary">
             </div>
         </div>
     </div>
