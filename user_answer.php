@@ -13,7 +13,7 @@ if($cek->rowCount() <> 0){
 	$result = "false";
 }
 
-//$insert = $db->query("INSERT INTO answers VALUES ('', '".$_POST['question_id']."', '".$user."', '".$_POST['answer']."', '$result')");
+$insert = $db->query("INSERT INTO answers VALUES ('', '".$_POST['question_id']."', '".$user."', '".$_POST['answer']."', '$result', '1')");
 
 //return soal baru yang belum pernah dijawab
 $arr = '';
@@ -25,24 +25,28 @@ if($ans->rowCount() <> 0){
 	$answered = rtrim($arr,", ");
 
 	$not_answered = $db->query("SELECT * FROM questions  WHERE id NOT IN ($answered) ");
-	$rand = [];
-	foreach($not_answered as $not){
-		array_push($rand, $not['id']);
-	}
+	
+	if($not_answered->rowCount() <> 0){
 
-	$quest = $rand[array_rand($rand)];
+		$rand = [];
+		foreach($not_answered as $not){
+			array_push($rand, $not['id']);
+		}
 
-	//select next question
-	$next = $db->query("SELECT * FROM questions  WHERE id = '$quest' ")->fetch();
-	//multiple choices
-	$choices = $db->query("SELECT * FROM multiple_choice WHERE question_id = '$quest'");
-	foreach($choices as $c){
-		array_push($next, $c['value']);
-	}
-	echo json_encode($next);
+		$quest = $rand[array_rand($rand)];
 
-} else {
+		//select next question
+		$next = $db->query("SELECT * FROM questions  WHERE id = '$quest' ")->fetch();
+		//multiple choices
+		$choices = $db->query("SELECT * FROM multiple_choice WHERE question_id = '$quest'");
+		foreach($choices as $c){
+			array_push($next, $c['value']);
+		}
+		
+		echo json_encode($next);
+	} 
 
+	
 }
 
 

@@ -60,8 +60,11 @@ if(isset($_GET['question'])){
                     $('#span6').html(data[6]);
                     $('#answer7').val(data[7]);
                     $('#span8').html(data[7]);
-                    //alert("submit jawaban berhasil");
-                } 
+                    
+                },
+                error : function(){
+                    window.location.href = "result.php";
+                }
             });
         } else {
             alert("pilih jawaban");
