@@ -10,8 +10,8 @@ $db = new PDO("mysql:host=$dbHost; dbname=$dbName; charset=utf8", $dbUser, $dbPa
 
 require_once "Facebook/autoload.php";
 $fb = new Facebook\Facebook([
-	'app_id' => '135871274021219',
-	'app_secret' => '0204f151932dd4c3dc79319c06d23ffd',
+	'app_id' => 'YOUR_APP_ID',
+	'app_secret' => 'YOUR_APP_SECRET',
 ]);
 $helper = $fb->getRedirectLoginHelper();
 
