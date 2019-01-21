@@ -27,9 +27,9 @@ $userData = $response->getGraphNode()->asArray();
 
 $_SESSION['userData'] = $userData;
 $_SESSION['access_token'] = (string) $accessToken;
-
+$date = date('Y-m-d H:i:s');
 //insert to DB
-$db->query("INSERT INTO users values ('".$_SESSION['userData']['id']."', '".$_SESSION['userData']['name']."', '".$_SESSION['userData']['email']."', 'progress')");
+$db->query("INSERT INTO users values ('".$_SESSION['userData']['id']."', '".$_SESSION['userData']['name']."', '".$_SESSION['userData']['email']."', 'progress', '$date')");
 
 header('location:index.php');
 exit();

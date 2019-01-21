@@ -13,11 +13,18 @@ if($cek->rowCount() <> 0){
 	$result = "false";
 }
 
-$insert = $db->query("INSERT INTO answers VALUES ('', '".$_POST['question_id']."', '".$user."', '".$_POST['answer']."', '$result', '1')");
+$is_answered = $db->query("SELECT * FROM answers WHERE user_id = '$user' AND question_id = '".$_POST['question_id']."' AND stat = '1' ");
+if($is_answered->rowCount() != 0){
+	echo "failed";
+} else {
+	$insert = $db->query("INSERT INTO answers VALUES ('', '".$_POST['question_id']."', '".$user."', '".$_POST['answer']."', '$result', '1')");	
+}
+
+
 
 //return soal baru yang belum pernah dijawab
 $arr = '';
-$ans = $db->query("SELECT * FROM answers WHERE user_id = '$user'");
+$ans = $db->query("SELECT * FROM answers WHERE user_id = '$user' AND stat = '1' ");
 if($ans->rowCount() <> 0){
 	foreach($ans as $data) {
 		$arr .= "'".$data['question_id'] ."', ";

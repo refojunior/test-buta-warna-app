@@ -26,7 +26,7 @@ if($hasil == 10){
         <div class="row justify-content-center">
             <div class="col-md-4" style="text-align: center">
                 <h3>HASIL NYA ADALAH</h3>
-                <h4><?= $hasil ?></h4>
+                <h4><?= $hasil ?>0</h4>
                 <p><?= $msg ?></p>
             </div>
         </div>
