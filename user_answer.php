@@ -13,10 +13,12 @@ if($cek->rowCount() <> 0){
 	$result = "false";
 }
 
+//kalau jawaban pernah dijawab oleh user akan error
 $is_answered = $db->query("SELECT * FROM answers WHERE user_id = '$user' AND question_id = '".$_POST['question_id']."' AND stat = '1' ");
 if($is_answered->rowCount() != 0){
 	echo "failed";
 } else {
+	//jika tidak pernah dijawab insert ke table answers
 	$insert = $db->query("INSERT INTO answers VALUES ('', '".$_POST['question_id']."', '".$user."', '".$_POST['answer']."', '$result', '1')");	
 }
 

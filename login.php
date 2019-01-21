@@ -16,10 +16,10 @@
     <div class="container" style="margin-top:100px">
         <div class="row justify-content-center">
             <div class="col-md-6 col-md-offset-3" align="center">
-                <h2>LOGIN DENGAN AKUN FB/GMAIL UNTUK MEMULAI </h2>
+                <h2>LOGIN DENGAN AKUN FACEBOOK ANDA UNTUK MEMULAI </h2>
                 
-                    <button type="button" onclick="window.location = '<?= $loginURL ?>' " class="btn btn-primary btn-lg"><i class="fab fa-facebook-f"></i></button>
-                </form>
+                    <button type="button" onclick="window.location = '<?= $loginURL ?>' " class="btn btn-primary btn-lg btn-block"><i class="fab fa-facebook-f"></i></button>
+                
             </div>
         </div>
     </div>
